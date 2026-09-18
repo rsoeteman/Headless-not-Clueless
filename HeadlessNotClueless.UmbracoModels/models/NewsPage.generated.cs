@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>News Page</summary>
 	[PublishedModel("newsPage")]
-	public partial class NewsPage : PublishedContentModel, IContentComposition, IMediaPickerComposition, IPublicationDateComposition, ITitleComposition
+	public partial class NewsPage : PublishedContentModel, IContentComposition, IMediaPickerComposition, IPublicationDateComposition, ITitleComposition, IWebsitePickerComposition
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -79,5 +79,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("title")]
 		public virtual string Title => global::Umbraco.Cms.Web.Common.PublishedModels.TitleComposition.GetTitle(this, _publishedValueFallback);
+
+		///<summary>
+		/// Website Picker: Select one or more website to publish this content item to
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("websitePicker")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> WebsitePicker => global::Umbraco.Cms.Web.Common.PublishedModels.WebsitePickerComposition.GetWebsitePicker(this, _publishedValueFallback);
 	}
 }
