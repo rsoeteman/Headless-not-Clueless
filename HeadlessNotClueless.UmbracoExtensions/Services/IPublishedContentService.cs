@@ -7,4 +7,5 @@ public interface IPublishedContentService
 {
     IPublishedContent? ToPublishedContent(IContent content);
 
+    T? GetFirstRootItem<T>() where T : PublishedContentModel;
 }

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>News Page</summary>
 	[PublishedModel("newsPage")]
-	public partial class NewsPage : PublishedContentModel, IContentComposition, IMediaPickerComposition, IPublicationDateComposition, ITitleComposition, IWebsitePickerComposition
+	public partial class NewsPage : PublishedContentModel, IContentComposition, IMediaPickerComposition, IPublicationDateComposition, IRelatedItemPickerComposition, ITitleComposition, IWebsitePickerComposition
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -71,6 +71,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[ImplementPropertyType("publicationDate")]
 		public virtual global::System.DateTime PublicationDate => global::Umbraco.Cms.Web.Common.PublishedModels.PublicationDateComposition.GetPublicationDate(this, _publishedValueFallback);
+
+		///<summary>
+		/// Related Item Picker
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("relatedItemPicker")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> RelatedItemPicker => global::Umbraco.Cms.Web.Common.PublishedModels.RelatedItemPickerComposition.GetRelatedItemPicker(this, _publishedValueFallback);
 
 		///<summary>
 		/// Title
