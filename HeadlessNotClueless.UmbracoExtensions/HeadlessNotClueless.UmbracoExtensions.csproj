@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Filters\" />
+      <PackageReference Include="Umbraco.Cms.Core" Version="18.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HeadlessNotClueless.UmbracoModels\HeadlessNotClueless.UmbracoModels.csproj" />
     </ItemGroup>
 
 </Project>
