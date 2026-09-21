@@ -1,0 +1,28 @@
+info:
+  name: News Item from BE
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: https://{{host}}/umbraco/delivery/api/v2/content/item/news/new-front-end-hire/?expand=properties[$all]&fields=properties[$all]
+  headers:
+    - name: Api-Key
+      value: "{{Api-Key}}"
+    - name: Start-Item
+      value: "{{be-id}}"
+  params:
+    - name: expand
+      value: properties[$all]
+      type: query
+    - name: fields
+      value: properties[$all]
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

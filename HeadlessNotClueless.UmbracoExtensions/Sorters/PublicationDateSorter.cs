@@ -3,10 +3,8 @@ using Umbraco.Cms.Core.DeliveryApi;
 
 namespace HeadlessNotClueless.UmbracoExtensions.Sorters;
 
-public class PublicationDateSorter
+public class PublicationDateSorter : ISortHandler
 {
-    private const string Descending = "desc";
-    
     public bool CanHandle(string query)
     {
         if (string.IsNullOrWhiteSpace(query))
@@ -19,14 +17,11 @@ public class PublicationDateSorter
 
     public SortOption BuildSortOption(string sort)
     {
-        var specifierName = $"{DeliveryAPIConstants.PublicationDateFieldName}:";
-        var sortValue = sort.Substring(specifierName.Length);
-        var direction = sortValue.Equals(Descending,StringComparison.InvariantCultureIgnoreCase)? Direction.Descending:  Direction.Ascending;
-        
+        //always sort descending in case of news
         return new SortOption
         {
             FieldName = DeliveryAPIConstants.PublicationDateFieldName,
-            Direction = direction
+            Direction = Direction.Descending
         };
     }
 

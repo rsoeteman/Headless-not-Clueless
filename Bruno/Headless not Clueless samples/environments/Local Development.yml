@@ -1,0 +1,13 @@
+name: Local Development
+variables:
+  - name: host
+    value: localhost:44345
+    description: ""
+  - name: be-id
+    value: ed7d6dc7-c453-44fd-b077-4b4a8e81b89f
+    description: Website id for Belgium
+  - name: nl-id
+    value: bd7bd3e5-3cca-464e-8526-43ee84d457ad
+    description: ""
+  - secret: true
+    name: Api-Key

@@ -6,16 +6,25 @@ using Umbraco.Extensions;
 
 namespace HeadlessNotClueless.UmbracoExtensions.Services;
 
+/// <summary>
+/// Simple service that helps us with a few IPublishedContent operations
+/// </summary>
 internal class PublishedContentService(
     IUmbracoContextFactory _contextFactory,
     IDocumentNavigationQueryService _documentNavigationService,
     IPublishedContentStatusFilteringService _publishedStatusFilteringService) : IPublishedContentService
 {
+    /// <summary>
+    /// Takes Backoffice IContent and converts that to IPublishedContent
+    /// </summary>
     public IPublishedContent? ToPublishedContent(IContent content)
     {
         return GetContext()?.Content.GetById(content.Id);
     }
-
+    
+    /// <summary>
+    /// Gets the first item in the root matching a certain type of PublishedContentModel
+    /// </summary>
     public T? GetFirstRootItem<T>() where T : PublishedContentModel
     {
         _documentNavigationService.TryGetRootKeys(out var allRoots);
@@ -30,8 +39,6 @@ internal class PublishedContentService(
         //No match
         return null;
     }
-
-    
 
     private IPublishedContent? GetById(Guid id)
     {

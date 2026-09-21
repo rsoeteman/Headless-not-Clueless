@@ -1,4 +1,5 @@
 ﻿using Umbraco.Cms.Core.DeliveryApi;
+using Umbraco.Extensions;
 
 namespace HeadlessNotClueless.UmbracoExtensions.Filters;
 
@@ -13,13 +14,13 @@ public class PublicationDateFilter : IFilterHandler
     public FilterOption BuildFilterOption(string filter)
     {
         var specifierName = $"{DeliveryAPIConstants.PublicationDateFieldName}:";
-        var fieldValue = filter.Substring(specifierName.Length);
+        var fieldValue = DateTime.UtcNow.ToIsoString();
         
         return new FilterOption
         {
             FieldName = DeliveryAPIConstants.PublicationDateFieldName,
             Values = [fieldValue],
-            Operator = FilterOperation.GreaterThanOrEqual
+            Operator = FilterOperation.LessThanOrEqual
         };
 
     }

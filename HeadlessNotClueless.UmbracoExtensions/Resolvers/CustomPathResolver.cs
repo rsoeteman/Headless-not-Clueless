@@ -17,7 +17,7 @@ public class CustomPathResolver(
 {
     /// <summary>
     /// Resolver for items that can't be found in the current startnode.
-    /// check data folder(s) based ont type, currently for news
+    /// check "data" folder(s) based on type, currently for news
     /// </summary>
     /// <param name="path">The path to inspect</param>
     public override IPublishedContent? ResolveContentPath(string path)
@@ -35,9 +35,13 @@ public class CustomPathResolver(
         var newsFolder = _publishedContentService.GetFirstRootItem<NewsFolder>();
 
         //No news folder in this site, nothing to resolve
-        if (newsFolder == null) return null;
+        if (newsFolder == null)
+        {
+            return null;
+        }
 
         // Find news item  by UrlSegment  in the news folder
+        // We should include the check for website in here to.
         content = newsFolder.Children<NewsPage>(_navigationQueryService, _publishedStatusFilteringService, null).FirstOrDefault(n=>n.UrlSegment == slug);
 
         return content;
