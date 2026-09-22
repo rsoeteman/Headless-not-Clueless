@@ -1,0 +1,43 @@
+info:
+  name: News Overview NL
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: https://{{host}}/umbraco/delivery/api/v2/content?filter=publicationdate&filter=website:{{nl-id}}&skip=0&take=10&expand=properties[$all]&fields=properties[$all]&sort=publicationdate
+  headers:
+    - name: Api-Key
+      value: "{{Api-Key}}"
+    - name: Start-Item
+      value: news
+  params:
+    - name: filter
+      value: publicationdate
+      type: query
+    - name: filter
+      value: website:{{nl-id}}
+      type: query
+    - name: skip
+      value: "0"
+      type: query
+    - name: take
+      value: "10"
+      type: query
+    - name: expand
+      value: properties[$all]
+      type: query
+    - name: fields
+      value: properties[$all]
+      type: query
+    - name: sort
+      value: publicationdate
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

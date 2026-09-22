@@ -33,6 +33,14 @@
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="$(UmbracoAppLocalIcuVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="umbraco\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HeadlessNotClueless.UmbracoExtensions\HeadlessNotClueless.UmbracoExtensions.csproj" />
+  </ItemGroup>
+
 
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
